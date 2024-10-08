@@ -1,9 +1,18 @@
 @import 'reset.scss';
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
 
 // Main colors: (#000000), (#1C1C1C), (#333333).
 // Accent colors:  (#FFD700), (#FF4500), (#C0C0C0).
 // Text colors: (#FFFFFF), (#D3D3D3).
 
 body {
+	font-family: 'Poppins', sans-serif;
+	color: #ffffff;
 	background-color: #1c1c1c;
+}
+a,
+a:visited,
+a:active {
+	color: #ffffff;
+	text-decoration: none;
 }
