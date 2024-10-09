@@ -1,12 +1,13 @@
 @import 'reset.scss';
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 // Main colors: (#000000), (#1C1C1C), (#333333).
 // Accent colors:  (#FFD700), (#FF4500), (#C0C0C0).
 // Text colors: (#FFFFFF), (#D3D3D3).
 
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'Merriweather', sans-serif;
 	color: #ffffff;
 	background-color: #1c1c1c;
 }
@@ -15,4 +16,15 @@ a:visited,
 a:active {
 	color: #ffffff;
 	text-decoration: none;
+}
+._wrapper {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+._container {
+	max-width: 1230px;
+	margin: 0 auto;
+	padding: 0 15px;
 }
