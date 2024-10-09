@@ -1,7 +1,7 @@
 import { AuthForm } from '../ui/authForm';
 
-const LoginForm = () => {
+const Login = () => {
 	return <AuthForm title='Sign in' />;
 };
 
-export { LoginForm };
+export { Login };

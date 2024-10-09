@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { LoginForm } from '../../../features/auth/model/LoginForm';
+import { Login } from '../../../features/auth/model/Login';
 import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
@@ -12,7 +12,7 @@ const LoginPage = () => {
 					<Link to='/register'>Register</Link>
 				</div>
 
-				<LoginForm />
+				<Login />
 				<div className={styles.footer}>
 					<div className={styles.checkboxContainer}>
 						<input type='checkbox' id='rememberMe' value={'false'} />

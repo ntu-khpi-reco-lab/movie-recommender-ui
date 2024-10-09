@@ -1,7 +1,7 @@
 import { AuthForm } from '../ui/authForm';
 
-const RegisterForm = () => {
+const Register = () => {
 	return <AuthForm title='Register' />;
 };
 
-export { RegisterForm };
+export { Register };

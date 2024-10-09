@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { RegisterForm } from '../../../features/auth/model/RegisterForm';
+import { Register } from '../../../features/auth/model/Register';
 import styles from './RegisterPage.module.scss';
 
 const RegisterPage = () => {
@@ -11,7 +11,7 @@ const RegisterPage = () => {
 					<h2>Register</h2>
 					<Link to='/login'>Sign in</Link>
 				</div>
-				<RegisterForm />
+				<Register />
 				<div className={styles.footer}>
 					<div className={styles.checkboxContainer}>
 						<input type='checkbox' id='rememberMe' value={'false'} />
