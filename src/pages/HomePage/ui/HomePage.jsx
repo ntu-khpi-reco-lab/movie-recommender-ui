@@ -1,7 +1,16 @@
 import { Navigate } from 'react-router-dom';
+import { useAuth } from '/src/shared/hooks/use-auth';
 
 const HomePage = () => {
-	return <Navigate to='/login' />;
+	const { isAuth } = useAuth();
+
+	return isAuth ? (
+		<>
+			<h1>Homepage</h1>
+		</>
+	) : (
+		<Navigate to='/login' />
+	);
 };
 
 export { HomePage };
