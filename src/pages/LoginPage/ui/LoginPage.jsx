@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { LoginForm } from '../../../features/auth/components/LoginForm';
+
+import { LoginForm } from '../../../features/auth/model/LoginForm';
 import styles from './LoginPage.module.scss';
 
 const LoginPage = () => {
