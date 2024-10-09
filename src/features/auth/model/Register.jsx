@@ -1,4 +1,4 @@
-import { AuthForm } from '../ui/authForm';
+import { AuthForm } from '../ui/AuthForm';
 
 const Register = () => {
 	return <AuthForm title='Register' />;
