@@ -24,35 +24,11 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: 18px;
-		//	letter-spacing: 0.5px;
 
 		ul {
 			display: flex;
 			align-items: center;
 			gap: 32px;
-
-			// li {
-			// 	position: relative;
-			// 	transition: all 0.2s ease-in-out;
-
-			// 	&::before {
-			// 		content: '';
-			// 		position: absolute;
-			// 		height: 2px;
-			// 		width: 100%;
-			// 		background-color: rgba($color: #ffd700, $alpha: 1);
-			// 		bottom: -6px;
-			// 		left: 0;
-			// 		transform: scaleX(0);
-			// 		transform-origin: right;
-			// 		transition: transform 0.2s ease-in-out;
-			// 	}
-
-			// 	&:hover::before {
-			// 		transform: scaleX(1);
-			// 		transform-origin: left;
-			// 	}
-			// }
 
 			a {
 				padding: 12px 24px;

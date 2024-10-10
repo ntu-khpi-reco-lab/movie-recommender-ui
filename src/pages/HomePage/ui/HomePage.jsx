@@ -3,9 +3,9 @@ import { Header } from '../../../widgets/Header/ui/Header';
 import { useAuth } from '/src/shared/hooks/use-auth';
 
 const HomePage = () => {
-	const { isAuth } = useAuth();
+	const { isAuthenticated } = useAuth();
 
-	return isAuth ? (
+	return isAuthenticated ? (
 		<div className='_wrapper'>
 			<Header />
 			<main>
