@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { Login } from '../../../features/auth/model/Login';
 import styles from './LoginPage.module.scss';
 

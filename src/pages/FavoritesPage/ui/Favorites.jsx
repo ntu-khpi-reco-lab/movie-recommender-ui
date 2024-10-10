@@ -1,4 +1,4 @@
-import { Header } from '../../../shared/ui/Header/ui/Header';
+import { Header } from '../../../widgets/Header/ui/Header';
 
 const Favorites = () => {
 	return (

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
+import popcornLogo from '/src/assets/icons/popcorn-bag.svg';
 
 const Header = () => {
 	const headerLinks = [
@@ -13,6 +14,7 @@ const Header = () => {
 		<header className={styles.header}>
 			<nav className='_container'>
 				<Link className={styles.logo} to='/'>
+					<img src={popcornLogo} alt='LogoPopcorn' height={40} />
 					PMR
 				</Link>
 				<ul>

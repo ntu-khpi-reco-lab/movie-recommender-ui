@@ -1,5 +1,5 @@
 import { Navigate } from 'react-router-dom';
-import { Header } from '../../../shared/ui/Header/ui/Header';
+import { Header } from '../../../widgets/Header/ui/Header';
 import { useAuth } from '/src/shared/hooks/use-auth';
 
 const HomePage = () => {
