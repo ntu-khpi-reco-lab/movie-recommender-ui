@@ -1,19 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { MovieCard } from '../../../entities/MovieCard';
+import styles from './FavouriteList.module.scss';
 
 const FavouriteList = () => {
+	const favourites = useSelector(state => state.likedMovies);
+
+	if (favourites.length === 0) {
+		return (
+			<div className={styles.noFavourites}>There are no favourite films 🙄</div>
+		);
+	}
 	return (
-		<div>
-			<MovieCard
-				key={movie.id}
-				id={movie.id}
-				movie={{
-					id: movie.id,
-					title: movie.title,
-					genre: movie.genre_ids.length > 0 ? movie.genre_ids[0] : 'Unknown',
-					poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
-				}}
-			/>
+		<div className={styles.favouriteList}>
+			{favourites.map(movie => (
+				<MovieCard key={movie.id} movie={movie} />
+			))}
 		</div>
 	);
 };
