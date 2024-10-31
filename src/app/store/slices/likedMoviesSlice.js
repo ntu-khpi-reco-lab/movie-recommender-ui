@@ -4,7 +4,7 @@ const likedMoviesSlice = createSlice({
 	name: 'likedMovies',
 	initialState: [],
 	reducers: {
-		addMovie: (state, action) => {
+		toggleMovie: (state, action) => {
 			const existingMovie = state.find(movie => movie.id === action.payload.id);
 			if (!existingMovie) {
 				state.push(action.payload);
@@ -18,5 +18,5 @@ const likedMoviesSlice = createSlice({
 	},
 });
 
-export const { addMovie, clearMovies } = likedMoviesSlice.actions;
+export const { toggleMovie, clearMovies } = likedMoviesSlice.actions;
 export default likedMoviesSlice.reducer;
