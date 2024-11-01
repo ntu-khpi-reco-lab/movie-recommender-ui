@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { fetchMovies } from '../../../shared/api/tmdbApi';
 import { MovieCard } from '../../../entities/MovieCard';
+import { fetchMovies } from '../../../shared/api/tmdbApi';
+import { Pagination } from '../../../widgets/Pagination';
 import styles from './MovieList.module.scss';
 
 const MovieList = () => {
@@ -12,7 +13,6 @@ const MovieList = () => {
 		const getMovies = async () => {
 			setLoading(true);
 			const moviesData = await fetchMovies(currentPage);
-			console.log('Fetched Movies Data:', moviesData);
 			setMovies(moviesData);
 			setLoading(false);
 		};
@@ -20,21 +20,13 @@ const MovieList = () => {
 		getMovies();
 	}, [currentPage]);
 
-	const handleNextPage = () => {
-		setCurrentPage(prevPage => prevPage + 1);
-	};
-
-	const handlePreviousPage = () => {
-		setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
-	};
-
-	if (loading) {
-		return <div className={styles.loadingMessage}>Loading movies...</div>;
-	}
-
 	return (
 		<div className={styles.movieList}>
-			{movies.length > 0 ? (
+			{loading ? (
+				<div className={styles.loader}>Loading movies...</div>
+			) : movies.length === 0 ? (
+				<div className={styles.noMovies}>No movies available.</div>
+			) : (
 				movies.map(movie => (
 					<MovieCard
 						key={movie.id}
@@ -47,15 +39,10 @@ const MovieList = () => {
 						}}
 					/>
 				))
-			) : (
-				<div>No movies found.</div>
 			)}
-			<div>
-				<button onClick={handlePreviousPage} disabled={currentPage === 1}>
-					Previous
-				</button>
-				<button onClick={handleNextPage}>Next</button>
-			</div>
+			{movies.length > 0 && (
+				<Pagination currentPage={currentPage} onPageChange={setCurrentPage} />
+			)}
 		</div>
 	);
 };
