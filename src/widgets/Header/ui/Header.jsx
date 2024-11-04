@@ -4,7 +4,7 @@ import popcornLogo from '/src/assets/icons/popcorn-bag.svg';
 
 const Header = () => {
 	const headerLinks = [
-		{ title: 'Favorites', path: '/favorites' },
+		{ title: 'Favourites', path: '/favourites' },
 		{ title: 'Lorem', path: '/' },
 		{ title: 'Ipsum', path: '/' },
 		{ title: 'Dolor', path: '/' },

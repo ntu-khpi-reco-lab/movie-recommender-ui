@@ -1,0 +1,37 @@
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 16px;
+	margin-bottom: 25px;
+}
+
+.arrowButton {
+	background-color: #1c1c1c;
+	border: 1px solid #c39a5d;
+	border-radius: 8px;
+	padding: 8px;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+	margin: 0 8px;
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	img {
+		width: 24px;
+		height: 24px;
+	}
+}
+
+.pageIndicator {
+	color: #c39a5d;
+	font-size: 16px;
+	margin: 0 8px;
+}
