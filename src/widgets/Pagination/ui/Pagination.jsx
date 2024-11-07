@@ -3,7 +3,7 @@ import styles from './Pagination.module.scss';
 import leftArrow from '/src/assets/icons/arrow_left.svg';
 import rightArrow from '/src/assets/icons/arrow_right.svg';
 
-const Pagination = ({ currentPage, onPageChange }) => {
+const Pagination = ({ currentPage, onPageChange, totalPages }) => {
 	return (
 		<div className={styles.pagination}>
 			<button
@@ -16,6 +16,7 @@ const Pagination = ({ currentPage, onPageChange }) => {
 			<span className={styles.pageIndicator}>Page {currentPage}</span>
 			<button
 				onClick={() => onPageChange(currentPage + 1)}
+				disabled={currentPage === totalPages}
 				className={styles.arrowButton}
 			>
 				<img src={rightArrow} alt='Next Page' />

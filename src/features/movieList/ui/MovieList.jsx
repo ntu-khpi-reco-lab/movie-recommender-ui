@@ -5,9 +5,12 @@ import { Pagination } from '../../../widgets/Pagination';
 import styles from './MovieList.module.scss';
 
 const MovieList = () => {
+	const [currentPage, setCurrentPage] = useState(() => {
+		const savedPage = sessionStorage.getItem('movieCurrentPage');
+		return savedPage ? Number(savedPage) : 1;
+	});
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(true);
-	const [currentPage, setCurrentPage] = useState(1);
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -19,6 +22,11 @@ const MovieList = () => {
 
 		getMovies();
 	}, [currentPage]);
+
+	const handlePageChange = newPage => {
+		setCurrentPage(newPage);
+		sessionStorage.setItem('movieCurrentPage', newPage);
+	};
 
 	return (
 		<div className={styles.movieList}>
@@ -41,7 +49,12 @@ const MovieList = () => {
 				))
 			)}
 			{movies.length > 0 && (
-				<Pagination currentPage={currentPage} onPageChange={setCurrentPage} />
+				<div className={styles.pagination}>
+					<Pagination
+						currentPage={currentPage}
+						onPageChange={handlePageChange}
+					/>
+				</div>
 			)}
 		</div>
 	);
