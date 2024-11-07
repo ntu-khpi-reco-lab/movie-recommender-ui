@@ -1,8 +1,16 @@
 .movieList {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: left;
 	gap: 20px;
+	padding-bottom: 40px;
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .noFavourites {
