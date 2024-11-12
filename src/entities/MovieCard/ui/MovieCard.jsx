@@ -1,3 +1,6 @@
+
+import React from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleMovie } from '../../../app/store/slices/likedMoviesSlice';
 import styles from './MovieCard.module.scss';

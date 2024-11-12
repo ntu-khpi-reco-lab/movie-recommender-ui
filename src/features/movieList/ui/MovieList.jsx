@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { MovieCard } from '../../../entities/MovieCard';
 import { fetchMovies, fetchMoviesByGenre } from '../../../shared/api/tmdbApi';
@@ -5,6 +6,15 @@ import { Pagination } from '../../../widgets/Pagination';
 import styles from './MovieList.module.scss';
 
 const MovieList = ({ selectedGenre, searchQuery }) => {
+
+import React, { useEffect, useState } from 'react';
+import { MovieCard } from '../../../entities/MovieCard';
+import { fetchMovies } from '../../../shared/api/tmdbApi';
+import { Pagination } from '../../../widgets/Pagination';
+import styles from './MovieList.module.scss';
+
+const MovieList = () => {
+
 	const [currentPage, setCurrentPage] = useState(() => {
 		const savedPage = sessionStorage.getItem('movieCurrentPage');
 		return savedPage ? Number(savedPage) : 1;
@@ -12,7 +22,9 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(true);
 
+
 	//! need to refactor: start
+
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -24,6 +36,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 
 		getMovies();
 	}, [currentPage]);
+
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -48,6 +61,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 	}, [selectedGenre, searchQuery]);
 
 	//! need to refactor: end
+
 
 	const handlePageChange = newPage => {
 		setCurrentPage(newPage);

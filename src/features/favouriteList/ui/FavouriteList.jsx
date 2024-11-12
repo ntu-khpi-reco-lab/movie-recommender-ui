@@ -1,4 +1,8 @@
+
 import { useState } from 'react';
+
+import React, { useState } from 'react';
+
 import { useSelector } from 'react-redux';
 import { MovieCard } from '../../../entities/MovieCard';
 import { Pagination } from '../../../widgets/Pagination';
