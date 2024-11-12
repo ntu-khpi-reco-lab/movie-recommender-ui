@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { GenreButtons } from '../../../entities/genre/ui/GenreButtons';
 import { SearchBar } from '../../../entities/search/ui/SearchBar';
 import MovieList from '../../../features/movieList/ui/MovieList';
-import { fetchGenres } from '../../../shared/api/tmdbApi'; // Импорт функции
+import { fetchGenres } from '../../../shared/api/tmdbApi';
 import { Header } from '../../../widgets/Header/ui/Header';
 import { useAuth } from '/src/shared/hooks/use-auth';
 
