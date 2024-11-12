@@ -1,0 +1,14 @@
+.moviesContainer {
+	display: flex;
+	gap: 20px;
+	aside {
+		max-width: 170px;
+	}
+	h3 {
+		color: #c0c0c0;
+		font-family: 'Bebas Neue', sans-serif;
+		font-size: 24px;
+		margin-bottom: 20px;
+		letter-spacing: 1px;
+	}
+}

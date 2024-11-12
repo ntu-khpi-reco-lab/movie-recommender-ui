@@ -1,0 +1,27 @@
+.movieList {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: left;
+	gap: 20px;
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin-top: 20px;
+}
+.loader {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.5rem;
+	color: #ffffff;
+	text-align: center;
+	margin-top: 20px;
+}
+
+.noMovies {
+	font-family: 'Oswald', sans-serif;
+	font-size: 2rem;
+	color: #ffffff;
+	text-align: center;
+	margin-top: 20px;
+}

@@ -1,6 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
+import genreReducer from './slices/genreSlice';
+import likedMoviesReducer from './slices/likedMoviesSlice';
 import userReducer from './slices/userSlice';
 
 export const store = configureStore({
-	reducer: { user: userReducer },
+	reducer: {
+		user: userReducer,
+		genre: genreReducer,
+		likedMovies: likedMoviesReducer,
+	},
 });
