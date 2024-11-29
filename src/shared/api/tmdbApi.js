@@ -3,7 +3,6 @@ import axios from 'axios';
 const API_KEY = '167760e3cebe9b21fd382390481c05d5';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-
 const fetchMovies = async (page = 1) => {
 	try {
 		const response = await axios.get(`${BASE_URL}/movie/popular`, {

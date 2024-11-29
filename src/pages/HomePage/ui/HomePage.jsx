@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { GenreButtons } from '../../../entities/genre/ui/GenreButtons';
 import { SearchBar } from '../../../entities/search/ui/SearchBar';
-import MovieList from '../../../features/movieList/ui/MovieList';
+import { MovieList } from '../../../features/movieList/ui/MovieList';
 import { fetchGenres } from '../../../shared/api/tmdbApi';
-import { Header } from '../../../widgets/Header/ui/Header';
+import { Header } from '../../../widgets/Header';
 import { useAuth } from '/src/shared/hooks/use-auth';
 
 import styles from './HomePage.module.scss';
