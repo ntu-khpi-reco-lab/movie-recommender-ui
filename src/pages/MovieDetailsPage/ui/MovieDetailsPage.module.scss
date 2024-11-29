@@ -1,0 +1,81 @@
+// Основные цвета
+$black: #000000;
+$darkGray: #1c1c1c;
+$midGray: #333333;
+$white: #ffffff;
+$lightGray: #d3d3d3;
+
+// Акцентные цвета
+$gold: #ffd700;
+$orangeRed: #ff4500;
+$silver: #c0c0c0;
+
+.movieDetailsWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: $midGray;
+}
+
+.movieDetailsContainer {
+	width: 100%;
+	max-width: 1200px;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.movieDetails {
+	background-color: $darkGray;
+	border-radius: 8px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	text-align: center;
+}
+
+.movieDetails h1 {
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+	color: $white;
+}
+
+.movieImageContainer {
+	margin-bottom: 20px;
+}
+
+.movieImage {
+	width: 100%;
+	height: auto;
+	max-width: 600px;
+	border-radius: 8px;
+	border: 2px solid $silver;
+}
+
+.movieInfo {
+	text-align: left;
+	margin-top: 20px;
+	color: $lightGray;
+}
+
+.movieInfo p {
+	font-size: 1rem;
+	color: $lightGray;
+	line-height: 1.5;
+}
+
+.movieInfo strong {
+	color: $gold;
+}
+
+button {
+	background-color: $orangeRed;
+	color: $white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+
+	&:hover {
+		background-color: darken($orangeRed, 10%);
+	}
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toggleMovie } from '../../../app/store/slices/likedMoviesSlice';
 import styles from './MovieCard.module.scss';
 import fallbackImage from '/src/assets/icons/fallback-image.svg';
@@ -17,7 +18,9 @@ const MovieCard = ({ movie }) => {
 
 	return (
 		<div className={styles.movieCard}>
-			<img src={movie.poster || fallbackImage} alt={movie.title} />
+			<Link to={`/movie/${movie.id}`} className={styles.movieCardLink}>
+				<img src={movie.poster || fallbackImage} alt={movie.title} />
+			</Link>
 			<h2>{movie.title}</h2>
 			<button className={styles.likeButton} onClick={toggleFavourite}>
 				<img src={isFavourite ? heartFilled : heartEmpty} alt='Like' />
