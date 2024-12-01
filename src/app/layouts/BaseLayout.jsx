@@ -3,6 +3,7 @@ import { Favourites } from '../../pages/FavouritesPage';
 import { HomePage } from '../../pages/HomePage/ui/HomePage';
 import { LoginPage } from '../../pages/LoginPage';
 import { RegisterPage } from '../../pages/RegisterPage';
+import { UserLocationPage } from '../../pages/UserLocationPage';
 import { UserProfilePage } from '../../pages/UserProfilePage';
 
 function BaseLayout() {
@@ -13,6 +14,7 @@ function BaseLayout() {
 			<Route exact path='/register' Component={RegisterPage} />
 			<Route exact path='/favourites' Component={Favourites} />
 			<Route exact path='/user-profile' Component={UserProfilePage} />
+			<Route exact path='/userlocation' Component={UserLocationPage} />
 		</Routes>
 	);
 }
