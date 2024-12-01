@@ -1,81 +1,111 @@
-// Основные цвета
-$black: #000000;
-$darkGray: #1c1c1c;
-$midGray: #333333;
-$white: #ffffff;
-$lightGray: #d3d3d3;
-
-// Акцентные цвета
-$gold: #ffd700;
-$orangeRed: #ff4500;
-$silver: #c0c0c0;
-
-.movieDetailsWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	background-color: $midGray;
-}
-
-.movieDetailsContainer {
-	width: 100%;
-	max-width: 1200px;
+.movieDetailsPage {
+	background-color: #1c1c1c;
+	color: #fff;
 	padding: 20px;
-	box-sizing: border-box;
-}
 
-.movieDetails {
-	background-color: $darkGray;
-	border-radius: 8px;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-	padding: 20px;
-	text-align: center;
-}
+	.detailsContainer {
+		display: flex;
+		gap: 20px;
+		background-color: #2f2f2f;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+	}
 
-.movieDetails h1 {
-	font-size: 2.5rem;
-	margin-bottom: 20px;
-	color: $white;
-}
+	.imageSection {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 20px;
+		position: relative;
 
-.movieImageContainer {
-	margin-bottom: 20px;
-}
+		.movieImage {
+			width: 65%;
+			height: auto;
+			border-radius: 5px;
+			box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 80px rgba(0, 0, 0, 0.6);
+		}
 
-.movieImage {
-	width: 100%;
-	height: auto;
-	max-width: 600px;
-	border-radius: 8px;
-	border: 2px solid $silver;
-}
+		.likeButton {
+			position: absolute;
+			right: 70px;
+			bottom: 20px;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
 
-.movieInfo {
-	text-align: left;
-	margin-top: 20px;
-	color: $lightGray;
-}
+			img {
+				width: 50px;
+				height: 50px;
+				transition: transform 0.2s ease;
 
-.movieInfo p {
-	font-size: 1rem;
-	color: $lightGray;
-	line-height: 1.5;
-}
+				&:hover {
+					transform: scale(1.1);
+				}
 
-.movieInfo strong {
-	color: $gold;
-}
+				&:active {
+					transform: scale(0.9);
+				}
+			}
+		}
 
-button {
-	background-color: $orangeRed;
-	color: $white;
-	border: none;
-	padding: 10px 20px;
-	border-radius: 5px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+		.movieRating {
+			margin-top: 15px;
+			font-size: 24px;
+			color: #ffd700;
+			text-align: center;
+			font-weight: bold;
+			display: inline-block;
+		}
+	}
 
-	&:hover {
-		background-color: darken($orangeRed, 10%);
+	.infoSection {
+		flex: 2;
+		padding: 20px;
+
+		.header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+
+			h1 {
+				font-size: 32px;
+				color: #ffd700;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			.closeButton {
+				background: transparent;
+				color: #fff;
+				font-size: 24px;
+				border: none;
+				cursor: pointer;
+			}
+		}
+
+		.detailsList {
+			margin-top: 20px;
+			list-style: none;
+			padding: 0;
+
+			li {
+				margin-bottom: 10px;
+				font-size: 18px;
+				color: #d3d3d3;
+
+				strong {
+					color: #fff;
+				}
+			}
+		}
+
+		.description {
+			margin-top: 20px;
+			font-size: 16px;
+			color: #d3d3d3;
+			line-height: 1.5;
+		}
 	}
 }
