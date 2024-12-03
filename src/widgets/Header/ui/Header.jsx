@@ -4,10 +4,10 @@ import popcornLogo from '/src/assets/icons/popcorn-bag.svg';
 
 const Header = () => {
 	const headerLinks = [
+		{ title: 'Showtimes', path: '/' },
 		{ title: 'Favourites', path: '/favourites' },
-		{ title: 'Lorem', path: '/' },
-		{ title: 'Ipsum', path: '/' },
-		{ title: 'Dolor', path: '/' },
+		{ title: 'Recommendations', path: '/' },
+		{ title: 'About us', path: '/' },
 	];
 
 	return (
@@ -24,7 +24,7 @@ const Header = () => {
 						</li>
 					))}
 				</ul>
-				<Link className={styles.user} to='/user-profile'>
+				<Link className={styles.user} to='/userprofile'>
 					<img src='/src/assets/icons/userProfile.png' alt='user' height={40} />
 				</Link>
 			</nav>

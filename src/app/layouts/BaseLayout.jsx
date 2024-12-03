@@ -13,7 +13,7 @@ function BaseLayout() {
 			<Route exact path='/login' Component={LoginPage} />
 			<Route exact path='/register' Component={RegisterPage} />
 			<Route exact path='/favourites' Component={Favourites} />
-			<Route exact path='/user-profile' Component={UserProfilePage} />
+			<Route exact path='/userprofile' Component={UserProfilePage} />
 			<Route exact path='/userlocation' Component={UserLocationPage} />
 		</Routes>
 	);
