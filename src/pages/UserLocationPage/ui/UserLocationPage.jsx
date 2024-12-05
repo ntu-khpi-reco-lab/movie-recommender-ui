@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { saveLocation } from '../../../app/store/slices/locationSlice';
 import { getCitiesByCountry, getCountries } from '../../../shared/api/geoDbApi';
 import styles from './UserLocationPage.module.scss';
@@ -61,11 +60,10 @@ const UserLocationPage = () => {
 			<div className={styles.container}>
 				<div className={styles.header}>
 					<h2>Select Your Location</h2>
-					<Link to='/'>Go Back</Link>
 				</div>
 				<form onSubmit={handleSubmit} className={styles.formContainer}>
 					<div className={styles.selectContainer}>
-						<label htmlFor='country'>Country</label>
+						<label htmlFor='country'></label>
 						<select
 							id='country'
 							value={selectedCountry}
@@ -81,7 +79,7 @@ const UserLocationPage = () => {
 					</div>
 
 					<div className={styles.selectContainer}>
-						<label htmlFor='city'>City</label>
+						<label htmlFor='city'></label>
 						<select
 							id='city'
 							value={selectedCity}

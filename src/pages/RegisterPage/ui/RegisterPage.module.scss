@@ -41,8 +41,15 @@
 			align-items: center;
 			width: 100%;
 
-			.usernameInput,
-			.passwordInput {
+			.nameContainer {
+				display: flex;
+				gap: 4px;
+			}
+
+			.lastNameInput,
+			.firstNameInput,
+			.emailInput,
+			.usernameInput {
 				width: 100%;
 				position: relative;
 
@@ -63,8 +70,31 @@
 				}
 			}
 			.passwordInput {
+				width: 100%;
+				position: relative;
+
 				img {
-					top: 12px;
+					position: absolute;
+					top: 13px;
+
+					&:first-child {
+						left: 13px;
+					}
+
+					&.toggleIcon {
+						right: 13px;
+						cursor: pointer;
+						opacity: 0.7;
+					}
+				}
+				&::before {
+					content: '';
+					width: 1px;
+					height: 28px;
+					background-color: rgba($color: #d3d3d3, $alpha: 0.1);
+					position: absolute;
+					top: 7px;
+					left: 38px;
 				}
 			}
 
@@ -80,6 +110,16 @@
 
 				&::placeholder {
 					font-size: 14px;
+				}
+			}
+
+			.firstNameInput,
+			.lastNameInput {
+				img {
+					opacity: 0.7;
+					position: absolute;
+					top: 12px;
+					left: 12px;
 				}
 			}
 
@@ -101,6 +141,7 @@
 				}
 			}
 		}
+
 		.footer {
 			display: flex;
 			align-items: center;

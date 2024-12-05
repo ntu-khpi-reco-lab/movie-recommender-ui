@@ -24,27 +24,29 @@
 
 	h2 {
 		font-family: 'Bebas Neue', sans-serif;
-		margin: 10px 0;
+		margin: 10px 0 35px;
 		font-size: 1.5rem;
+		overflow: hidden;
 	}
 
 	img {
 		width: 100%;
-		height: auto;
-		border-radius: 4px;
+		height: 400px;
+		object-fit: cover;
+		border-radius: 5px;
 	}
 
 	.likeButton {
 		position: absolute;
-		right: 10px;
-		bottom: 10px;
+		right: 5px;
+		bottom: 5px;
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
 
 		img {
-			width: 35px;
-			height: 35px;
+			width: 40px;
+			height: 40px;
 			transition: transform 0.2s ease;
 
 			&:hover {
@@ -55,5 +57,9 @@
 				transform: scale(0.9);
 			}
 		}
+	}
+
+	.movieCardLink {
+		display: block;
 	}
 }
