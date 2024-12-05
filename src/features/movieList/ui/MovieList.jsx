@@ -12,7 +12,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 	const [movies, setMovies] = useState([]);
 	const [loading, setLoading] = useState(true);
 
-	//! need to refactor: start
+	const moviesPerPage = 20;
 
 	useEffect(() => {
 		const getMovies = async () => {
@@ -54,6 +54,8 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 		sessionStorage.setItem('movieCurrentPage', newPage);
 	};
 
+	const showPagination = movies.length >= moviesPerPage;
+
 	return (
 		<div className={styles.movieList}>
 			{loading ? (
@@ -61,7 +63,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 			) : movies.length === 0 ? (
 				<div className={styles.noMovies}>No movies available.</div>
 			) : (
-				movies.map(movie => (
+				movies.slice(0, moviesPerPage).map(movie => (
 					<MovieCard
 						key={movie.id}
 						movie={{
@@ -74,7 +76,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 					/>
 				))
 			)}
-			{movies.length > 0 && (
+			{showPagination && (
 				<div className={styles.pagination}>
 					<Pagination
 						currentPage={currentPage}
