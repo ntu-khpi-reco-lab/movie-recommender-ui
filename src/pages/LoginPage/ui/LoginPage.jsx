@@ -10,11 +10,10 @@ const LoginPage = () => {
 					<h2>Sign in</h2>
 					<Link to='/register'>Register</Link>
 				</div>
-
 				<Login />
 				<div className={styles.footer}>
 					<div className={styles.checkboxContainer}>
-						<input type='checkbox' id='rememberMe' value={'false'} />
+						<input type='checkbox' id='rememberMe' />
 						<label htmlFor='rememberMe'>Remember me</label>
 					</div>
 					<a href='#'>Lost your password?</a>

@@ -34,6 +34,114 @@
 				}
 			}
 		}
+		.formContainer {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			align-items: center;
+			width: 100%;
+
+			.nameContainer {
+				display: flex;
+				gap: 4px;
+			}
+
+			.lastNameInput,
+			.firstNameInput,
+			.emailInput,
+			.usernameInput {
+				width: 100%;
+				position: relative;
+
+				img {
+					position: absolute;
+					top: 13px;
+					left: 13px;
+				}
+
+				&::before {
+					content: '';
+					width: 1px;
+					height: 28px;
+					background-color: rgba($color: #d3d3d3, $alpha: 0.1);
+					position: absolute;
+					top: 7px;
+					left: 38px;
+				}
+			}
+			.passwordInput {
+				width: 100%;
+				position: relative;
+
+				img {
+					position: absolute;
+					top: 13px;
+
+					&:first-child {
+						left: 13px;
+					}
+
+					&.toggleIcon {
+						right: 13px;
+						cursor: pointer;
+						opacity: 0.7;
+					}
+				}
+				&::before {
+					content: '';
+					width: 1px;
+					height: 28px;
+					background-color: rgba($color: #d3d3d3, $alpha: 0.1);
+					position: absolute;
+					top: 7px;
+					left: 38px;
+				}
+			}
+
+			input {
+				border-radius: 2px;
+				color: #ffd700;
+				font-size: 16px;
+				background-color: inherit;
+				border: 2px solid rgba($color: #d3d3d3, $alpha: 0.1);
+				width: 100%;
+				padding: 10px 10px 10px 45px;
+				box-sizing: border-box;
+
+				&::placeholder {
+					font-size: 14px;
+				}
+			}
+
+			.firstNameInput,
+			.lastNameInput {
+				img {
+					opacity: 0.7;
+					position: absolute;
+					top: 12px;
+					left: 12px;
+				}
+			}
+
+			button {
+				font-size: 14px;
+				font-weight: 500;
+				letter-spacing: 0.5px;
+				border-radius: 2px;
+				color: #fff;
+				background-color: rgba($color: #ffd700, $alpha: 0.8);
+				width: 100%;
+				padding: 12px;
+				border: 1px solid rgba($color: #ffd700, $alpha: 0.8);
+				cursor: pointer;
+				transition: background-color 0.2s ease-in-out;
+
+				&:hover {
+					background-color: rgba($color: #ffd700, $alpha: 1);
+				}
+			}
+		}
+
 		.footer {
 			display: flex;
 			align-items: center;
