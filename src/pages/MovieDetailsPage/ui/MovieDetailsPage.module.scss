@@ -108,4 +108,55 @@
 			line-height: 1.5;
 		}
 	}
+
+	.recommendationsContainer {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+		background-color: #2f2f2f;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+		margin-top: 30px;
+		padding: 20px;
+
+		.recommendationsTitle {
+			font-size: 24px;
+			color: #ffd700;
+			text-align: center;
+		}
+
+		.sliderControls {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+			width: 100%;
+
+			.arrowButton {
+				background-color: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 10px;
+
+				img {
+					width: 40px;
+					height: 40px;
+				}
+
+				&:disabled {
+					opacity: 0.5;
+					cursor: not-allowed;
+				}
+			}
+			.recommendationsSlider {
+				display: flex;
+				gap: 20px;
+				overflow: hidden;
+				flex-wrap: nowrap;
+				justify-content: center;
+				width: calc(100% - 100px);
+			}
+		}
+	}
 }
