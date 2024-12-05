@@ -1,6 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeUser, updateUser } from '../../../app/store/slices/userSlice.js';
+import {
+	deleteUser,
+	fetchUserData,
+	removeUser,
+	updateUser,
+} from '../../../app/store/slices/userSlice.js';
 import emailIcon from '../../../assets/icons/email.svg';
 import eyeSlashIcon from '../../../assets/icons/eye-slash.svg';
 import eyeIcon from '../../../assets/icons/eye.svg';
@@ -19,7 +24,20 @@ const UserProfilePage = () => {
 	const [password, setPassword] = useState('');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+
+	useEffect(() => {
+		const fetchUser = async () => {
+			if (user.token) {
+				await dispatch(fetchUserData(user.token));
+				setIsLoading(false);
+			} else {
+				setIsLoading(false);
+			}
+		};
+
+		fetchUser();
+	}, [dispatch, user.token]);
 
 	const handleUpdateProfile = async event => {
 		event.preventDefault();
@@ -32,8 +50,29 @@ const UserProfilePage = () => {
 		setIsLoading(true);
 
 		try {
-			dispatch(updateUser({ username, email, password }));
-			alert('Profile updated successfully!');
+			const token = user.token;
+			if (token) {
+				const updatedFields = {};
+
+				if (username !== user.username) updatedFields.username = username;
+				if (email !== user.email && email !== '') updatedFields.email = email;
+				if (password) updatedFields.password = password;
+
+				if (Object.keys(updatedFields).length > 0) {
+					await dispatch(updateUser({ ...updatedFields, token }));
+
+					localStorage.setItem(
+						'user',
+						JSON.stringify({ ...user, ...updatedFields })
+					);
+
+					alert('Profile updated successfully!');
+				} else {
+					alert('No changes detected.');
+				}
+			} else {
+				alert('Token not found. Please log in again.');
+			}
 		} catch (error) {
 			console.error('Error updating profile:', error);
 			alert('Failed to update profile.');
@@ -53,6 +92,7 @@ const UserProfilePage = () => {
 		if (field === 'password') setShowPassword(prev => !prev);
 		if (field === 'confirmPassword') setShowConfirmPassword(prev => !prev);
 	};
+
 	const handleDeleteProfile = async () => {
 		if (window.confirm('Are you sure you want to delete your profile?')) {
 			setIsLoading(true);
@@ -72,6 +112,10 @@ const UserProfilePage = () => {
 			}
 		}
 	};
+
+	if (isLoading) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<>

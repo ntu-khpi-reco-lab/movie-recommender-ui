@@ -1,11 +1,14 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 const initialState = {
 	email: null,
 	username: null,
-	token: null,
+	token: localStorage.getItem('token') || null,
 	id: null,
+	firstName: null,
+	lastName: null,
 	status: 'idle',
 	error: null,
 };
@@ -45,9 +48,38 @@ export const loginUser = createAsyncThunk(
 					password,
 				}
 			);
-			return response.data; // { email, username, id, token }
+			return response.data; // { token }
 		} catch (error) {
 			return rejectWithValue(error.response?.data || 'Login failed');
+		}
+	}
+);
+
+export const fetchUserData = createAsyncThunk(
+	'user/fetchUserData',
+	async (token, { rejectWithValue }) => {
+		try {
+			const decodedToken = jwtDecode(token);
+			const userId = decodedToken.id;
+
+			const response = await axios.get(
+				'http://localhost:8080/api/v1/users/profile',
+				{
+					headers: {
+						Authorization: `Bearer ${token}`,
+					},
+					params: {
+						userId: userId,
+					},
+				}
+			);
+			console.log(response.data);
+
+			return response.data;
+		} catch (error) {
+			return rejectWithValue(
+				error.response?.data || 'Failed to fetch user data'
+			);
 		}
 	}
 );
@@ -57,7 +89,7 @@ export const updateUser = createAsyncThunk(
 	async ({ username, email, password, token }, { rejectWithValue }) => {
 		try {
 			const response = await axios.put(
-				'http://localhost:8080/user/update',
+				'http://localhost:8080/api/v1/users/profile',
 				{ username, email, password },
 				{
 					headers: {
@@ -76,7 +108,7 @@ export const deleteUser = createAsyncThunk(
 	async ({ token }, { rejectWithValue }) => {
 		try {
 			const response = await axios.delete(
-				`http://localhost:8080/api/v1/users`,
+				'http://localhost:8080/api/v1/users/profile',
 				{
 					headers: {
 						Authorization: `Bearer ${token}`,
@@ -111,6 +143,7 @@ const userSlice = createSlice({
 			if (username) state.username = username;
 			if (email) state.email = email;
 			if (password) state.password = password;
+			state.token = action.payload.token;
 		},
 	},
 	extraReducers: builder => {
@@ -137,27 +170,55 @@ const userSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(loginUser.fulfilled, (state, action) => {
-				state.status = 'succeeded';
-				state.email = action.payload.email;
-				state.username = action.payload.username;
-				state.token = action.payload.token;
-				state.id = action.payload.id;
+				console.log('Login successful, response data:', action.payload);
+				if (action.payload) {
+					state.status = 'succeeded';
+					state.token = action.payload;
+					state.email = action.payload.email || null;
+					state.username = action.payload.username || null;
+					state.id = action.payload.id || null;
+
+					localStorage.setItem('token', action.payload);
+					localStorage.setItem('user', JSON.stringify(action.payload));
+				} else {
+					console.error('Token is undefined or missing in the response');
+				}
 			})
+
 			.addCase(loginUser.rejected, (state, action) => {
 				state.status = 'failed';
 				state.error = action.payload;
 			})
-
+			.addCase(fetchUserData.pending, state => {
+				state.status = 'loading';
+				state.error = null;
+			})
+			.addCase(fetchUserData.fulfilled, (state, action) => {
+				state.status = 'succeeded';
+				const { id, username, email, firstName, lastName } = action.payload;
+				state.id = id;
+				state.username = username;
+				state.email = email;
+				state.firstName = firstName;
+				state.lastName = lastName;
+			})
+			.addCase(fetchUserData.rejected, (state, action) => {
+				state.status = 'failed';
+				state.error = action.payload;
+			})
 			.addCase(updateUser.pending, state => {
 				state.status = 'loading';
 				state.error = null;
 			})
 			.addCase(updateUser.fulfilled, (state, action) => {
 				state.status = 'succeeded';
-				state.email = action.payload.email;
-				state.username = action.payload.username;
-				state.token = action.payload.token;
-				state.id = action.payload.id;
+				const { id, username, email, firstName, lastName } = action.payload;
+
+				state.id = id;
+				state.username = username;
+				state.email = email;
+				state.firstName = firstName;
+				state.lastName = lastName;
 			})
 			.addCase(updateUser.rejected, (state, action) => {
 				state.status = 'failed';

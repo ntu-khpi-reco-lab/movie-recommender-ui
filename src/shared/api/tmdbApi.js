@@ -9,12 +9,12 @@ const fetchMovies = async (page = 1) => {
 			params: {
 				api_key: API_KEY,
 				language: 'en-US',
-				page: page,
+				page,
 			},
 		});
 		return response.data.results;
 	} catch (error) {
-		console.error('Error fetching movies:', error);
+		console.error('Error fetching movies:', error.message);
 		return [];
 	}
 };
@@ -29,12 +29,17 @@ const fetchGenres = async () => {
 		});
 		return response.data.genres;
 	} catch (error) {
-		console.error('Error fetching genres:', error);
+		console.error('Error fetching genres:', error.message);
 		throw error;
 	}
 };
 
 const fetchMoviesByGenre = async genreId => {
+	if (!genreId) {
+		console.warn('Genre ID is required to fetch movies by genre');
+		return [];
+	}
+
 	try {
 		const response = await axios.get(`${BASE_URL}/discover/movie`, {
 			params: {
@@ -46,12 +51,17 @@ const fetchMoviesByGenre = async genreId => {
 		});
 		return response.data.results;
 	} catch (error) {
-		console.error('Error fetching movies by genre:', error);
+		console.error('Error fetching movies by genre:', error.message);
 		return [];
 	}
 };
 
 const fetchMoviesByTitle = async query => {
+	if (!query) {
+		console.warn('Query is required to fetch movies by title');
+		return [];
+	}
+
 	try {
 		const response = await axios.get(`${BASE_URL}/search/movie`, {
 			params: {
@@ -63,7 +73,7 @@ const fetchMoviesByTitle = async query => {
 		});
 		return response.data.results;
 	} catch (error) {
-		console.error('Error searching movies:', error);
+		console.error('Error searching movies:', error.message);
 		return [];
 	}
 };
