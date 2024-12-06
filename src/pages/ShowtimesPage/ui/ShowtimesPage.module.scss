@@ -1,0 +1,56 @@
+.showtimesPage {
+	h1 {
+		font-family: 'Oswald', sans-serif;
+		font-size: 2rem;
+		color: #ffffff;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.movieList {
+		display: flex;
+		align-items: center;
+		margin-top: 30px;
+
+		.movieItem {
+			display: flex;
+			align-items: center;
+			margin: 0 10px;
+			cursor: pointer;
+			color: #d3d3d3;
+			border: #d3d3d3 1px solid;
+			border-radius: 2px;
+			width: 100%;
+			padding: 24px;
+			transition: all 0.2s ease-in-out;
+			gap: 24px;
+
+			h2 {
+				font-family: 'Oswald', sans-serif;
+				font-size: 28px;
+				color: #ffffff;
+			}
+
+			&:hover {
+				border: #ffffff 1px solid;
+			}
+
+			.showtimesList {
+				display: flex;
+				gap: 14px;
+
+				li {
+					padding: 10px 20px;
+					font-size: 20px;
+					border: #d3d3d3 1px solid;
+					transition: 0.1s ease-in-out;
+
+					&:hover {
+						border: #ffbf00 1px solid;
+					}
+				}
+			}
+		}
+	}
+}

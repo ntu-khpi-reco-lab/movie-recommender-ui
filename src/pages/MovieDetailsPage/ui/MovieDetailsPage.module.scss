@@ -2,9 +2,12 @@
 	background-color: #1c1c1c;
 	color: #fff;
 	padding: 20px;
+	box-sizing: border-box;
 
 	.detailsContainer {
 		display: flex;
+		max-width: 1200px;
+		margin: 0 auto;
 		gap: 20px;
 		background-color: #2f2f2f;
 		border-radius: 10px;
@@ -110,6 +113,8 @@
 	}
 
 	.recommendationsContainer {
+		margin: 0 auto;
+		max-width: 1200px;
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
@@ -119,6 +124,7 @@
 		box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 		margin-top: 30px;
 		padding: 20px;
+		box-sizing: border-box;
 
 		.recommendationsTitle {
 			font-size: 24px;
@@ -150,6 +156,8 @@
 				}
 			}
 			.recommendationsSlider {
+				margin: 0 auto;
+				max-width: 1200px;
 				display: flex;
 				gap: 20px;
 				overflow: hidden;

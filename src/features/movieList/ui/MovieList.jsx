@@ -71,7 +71,7 @@ const MovieList = ({ selectedGenre, searchQuery }) => {
 							title: movie.title,
 							genre:
 								movie.genre_ids.length > 0 ? movie.genre_ids[0] : 'Unknown',
-							poster: `https://image.tmdb.org/t/p/w500/${movie.poster_path}`,
+							poster_path: movie.poster_path,
 						}}
 					/>
 				))

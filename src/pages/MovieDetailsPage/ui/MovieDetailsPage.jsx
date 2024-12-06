@@ -2,17 +2,12 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { toggleMovie } from '../../../app/store/slices/likedMoviesSlice';
-
 import { MovieCard } from '../../../entities/MovieCard';
-
 import { Header } from '../../../widgets/Header/ui/Header';
 import styles from './MovieDetailsPage.module.scss';
 import arrowLeft from '/src/assets/icons/arrow_left.svg';
 import arrowRight from '/src/assets/icons/arrow_right.svg';
 import fallbackImage from '/src/assets/icons/fallback-image.svg';
-import heartEmpty from '/src/assets/icons/heart-empty.svg';
-import heartFilled from '/src/assets/icons/heart-filled.svg';
 
 const MovieDetailsPage = () => {
 	const { movieId } = useParams();
@@ -22,7 +17,6 @@ const MovieDetailsPage = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const likedMovies = useSelector(state => state.likedMovies);
-	const isFavourite = likedMovies.some(movie => movie.id === parseInt(movieId));
 
 	useEffect(() => {
 		const fetchMovieDetails = async () => {
@@ -48,12 +42,6 @@ const MovieDetailsPage = () => {
 		};
 		fetchMovieDetails();
 	}, [movieId]);
-
-	const handleLikeClick = () => {
-		if (movie) {
-			dispatch(toggleMovie(movie));
-		}
-	};
 
 	const handleCloseClick = () => {
 		navigate(-1);
@@ -86,8 +74,9 @@ const MovieDetailsPage = () => {
 					<div className={styles.imageSection}>
 						<img
 							src={
-								`https://image.tmdb.org/t/p/w500${movie.poster_path}` ||
-								fallbackImage
+								movie.poster_path
+									? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+									: fallbackImage
 							}
 							alt={movie.title}
 							className={styles.movieImage}
@@ -95,9 +84,7 @@ const MovieDetailsPage = () => {
 						<div className={styles.movieRating}>
 							<p>{movie.vote_average.toFixed(1) || 'N/A'}</p>
 						</div>
-						<button className={styles.likeButton} onClick={handleLikeClick}>
-							<img src={isFavourite ? heartFilled : heartEmpty} alt='Like' />
-						</button>
+						<button className={styles.likeButton}></button>
 					</div>
 					<div className={styles.infoSection}>
 						<div className={styles.header}>
@@ -154,11 +141,8 @@ const MovieDetailsPage = () => {
 									movie={{
 										id: recMovie.id,
 										title: recMovie.title,
-										poster: `https://image.tmdb.org/t/p/w500/${recMovie.poster_path}`,
+										poster_path: recMovie.poster_path,
 									}}
-									isFavourite={likedMovies.some(
-										liked => liked.id === recMovie.id
-									)}
 									isSmall={true}
 								/>
 							))}
